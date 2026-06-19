@@ -6,6 +6,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 <!-- END:nextjs-agent-rules -->
 
+## Git 브랜치 생성해야하는 경우 규칙
+
+기능을 담당하는 브랜치는 아래의 규칙을 따른다.
+
+-   feature/[기능명]
+-   기능명은 소문자로만 대체하고, 길 경우 하이폰(-)을 넣는다.
+
 ## Git 작업 규칙
 
 -   브랜치는 `main`과 `feature/*`만 사용한다.
