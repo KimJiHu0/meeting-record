@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import Link from "next/link";
+import type { ButtonHTMLAttributes, ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 const buttonVariants = cva(
@@ -38,6 +39,12 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
         rightIcon?: ReactNode;
     };
 
+export type ButtonLinkProps = ComponentProps<typeof Link> &
+    VariantProps<typeof buttonVariants> & {
+        leftIcon?: ReactNode;
+        rightIcon?: ReactNode;
+    };
+
 /**
  * @docs MeetingFlow 공통 버튼. 주요 CTA는 variant="primary"를 사용하고,
  * 보조 액션은 secondary/ghost/danger로 의미를 분리한다.
@@ -66,5 +73,27 @@ export function Button({
             {children}
             {!loading ? rightIcon : null}
         </button>
+    );
+}
+
+/**
+ * @docs Next Link 기반 CTA. 페이지 이동 액션도 Button과 같은 시각 규칙을 공유한다.
+ */
+export function ButtonLink({
+    className,
+    variant,
+    size,
+    fullWidth,
+    leftIcon,
+    rightIcon,
+    children,
+    ...props
+}: ButtonLinkProps) {
+    return (
+        <Link className={cn(buttonVariants({ variant, size, fullWidth }), className)} {...props}>
+            {leftIcon}
+            {children}
+            {rightIcon}
+        </Link>
     );
 }
