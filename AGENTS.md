@@ -33,15 +33,6 @@ This version has breaking changes — APIs, conventions, and file structure may 
 -   `chore`: 설정, 패키지, 빌드 보조 작업 등 기타 변경
 -   `ci`: GitHub Actions 등 CI 설정 변경
 
-예시:
-
-```txt
-feat: add meeting upload form
-fix: handle empty transcript response
-docs: update project setup guide
-chore: update dependencies
-```
-
 ## Push 규칙
 
 -   push 대상은 현재 작업 중인 `feature/*` 브랜치로 한다.
