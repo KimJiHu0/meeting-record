@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MeetingFlow
 
-## Getting Started
+## 프로젝트 소개
 
-First, run the development server:
+MeetingFlow는 회의 음성을 녹음하고 AI로 분석해 회의록과 마감 일정을 정리하는 토이 프로젝트입니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+사용자는 브라우저에서 회의를 녹음한 뒤 AI 분석 결과를 확인하고, 회의 제목, 요약, 주요 내용, 담당자, 마감일을 회의록으로 저장할 수 있습니다. 저장된 회의록은 목록과 상세 화면에서 확인할 수 있으며, 회의에서 추출된 마감일은 일정 목록에서 함께 관리합니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 프로젝트 목표
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+MeetingFlow는 회의 후 반복적으로 발생하는 회의록 작성과 일정 정리 과정을 줄이는 것을 목표로 합니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+회의 기록, AI 분석, 회의록 저장, 일정 확인으로 이어지는 개인 생산성 흐름을 제공하여 사용자가 회의 내용을 빠르게 정리하고 후속 작업을 놓치지 않도록 돕습니다.
 
-## Learn More
+## 대상 사용자
 
-To learn more about Next.js, take a look at the following resources:
+-   개인 사용자
+-   소규모 프로젝트 참여자
+-   회의 후 회의록을 빠르게 정리하고 싶은 사용자
+-   담당자와 마감일을 놓치지 않고 관리하고 싶은 사용자
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## MVP 범위
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-   로그인 및 회원가입
+-   브라우저 기반 회의 녹음
+-   녹음 파일 기반 AI 회의 분석
+-   회의 제목, 요약, 주요 내용, 담당자, 마감일 추출
+-   분석 결과 확인 및 추가 메모 작성
+-   회의록 저장, 조회, 수정, 삭제
+-   마감 일정 조회
+-   사용자 프로필 관리
+-   회의 및 일정 카테고리 관리
 
-## Deploy on Vercel
+## 주요 사용자 흐름
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. 사용자가 회원가입 또는 로그인을 합니다.
+2. 대시보드에서 회의를 시작합니다.
+3. 회의 녹음 화면에서 브라우저 기반 음성 녹음을 진행합니다.
+4. 회의가 끝나면 녹음을 종료합니다.
+5. 녹음 파일을 기반으로 AI 분석을 요청합니다.
+6. AI 분석 결과에서 회의 제목, 요약, 주요 내용, 담당자, 마감일을 확인합니다.
+7. 사용자가 추가 메모를 작성하고 카테고리를 선택합니다.
+8. 최종 회의록을 저장합니다.
+9. 저장된 회의록은 회의 목록과 회의 상세에서 확인하고, 마감일은 일정 목록에서 확인합니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 참고 문서
+
+-   [기획서](docs/base/response/01.%20기획서.md)
+-   [기술스택](docs/base/common/기술스택.md)
+-   [전체 디자인](docs/base/response/02.%20전체디자인.md)
+-   [퍼블리싱 개발 가이드](docs/base/common/퍼블리싱_개발_가이드.md)
+-   [프론트엔드 AI 개발 가이드](docs/base/common/프론트엔드_AI_개발_가이드.md)
+
+## 고도화 방향
+
+### 1차 - AI 챗봇 도입
+
+저장된 회의록과 일정 데이터를 기반으로 사용자가 자연어로 질문하고 답변을 받을 수 있는 기능을 도입합니다.
+
+### 2차 - Google/Microsoft 캘린더 연동
+
+회의 분석을 통해 정리된 마감 일정을 외부 캘린더 서비스와 연결할 수 있도록 확장합니다.
+
+### 3차 - 개발팀 한정 팀 기능 제공
+
+개인 사용자 중심의 흐름을 개발팀 단위로 확장하여 팀 회의록과 팀 일정을 함께 관리할 수 있는 기능을 제공합니다.
+
+### 4차 - 팀 단위 확장
+
+개발팀을 넘어 기획팀, 디자인팀 등 다양한 팀에서도 사용할 수 있도록 사용 범위를 넓힙니다.
+
+### 5차 - 협업 플랫폼 연동
+
+Slack, Jira, Notion 등 협업 플랫폼과 연결하여 회의 이후의 업무 흐름까지 이어질 수 있도록 확장합니다.
+
+## 서비스 방향
+
+MeetingFlow는 단순히 회의 내용을 저장하는 도구에서 출발해, 회의 기록과 일정 관리, 팀 협업을 연결하는 서비스로 발전하는 것을 목표로 합니다.
+
+초기에는 개인 사용자가 회의록과 마감일을 빠르게 정리하는 데 집중하고, 이후에는 팀 단위 협업과 외부 서비스 연결을 통해 회의 이후의 실행 흐름까지 지원하는 방향으로 고도화합니다.
