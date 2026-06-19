@@ -10,6 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 기능을 담당하는 브랜치는 아래의 규칙을 따른다.
 
+-   main을 기준으로 브랜치를 생성한다.
 -   feature/[기능명]
 -   기능명은 소문자로만 대체하고, 길 경우 하이폰(-)을 넣는다.
 
