@@ -51,3 +51,24 @@ export function PageHeader({ className, title, description, action, ...props }: 
         </header>
     );
 }
+
+export type FooterProps = HTMLAttributes<HTMLElement> & {
+    children?: ReactNode;
+};
+
+/**
+ * @docs 앱 하단의 저작권/보조 링크 영역을 통일하는 푸터.
+ */
+export function Footer({ className, children, ...props }: FooterProps) {
+    return (
+        <footer
+            className={cn(
+                "mx-auto w-full max-w-[var(--content-app)] px-5 py-6 text-sm text-[var(--color-text-muted)] tablet:px-7 desktop:px-8",
+                className,
+            )}
+            {...props}
+        >
+            {children ?? <p>© MeetingFlow</p>}
+        </footer>
+    );
+}

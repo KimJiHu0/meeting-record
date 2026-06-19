@@ -1,4 +1,4 @@
-export { AppShell, PageHeader } from "./AppLayout";
+export { AppShell, Footer, PageHeader } from "@/components/layouts";
 export { Badge } from "./Badge";
 export { Button } from "./Button";
 export { Dialog } from "./Dialog";
